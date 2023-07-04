@@ -43,7 +43,7 @@ or
 ```javascript
 import data from "./metadata.json" assert { type: "json" };
 ```
-You can name the Variable and file name to what you want. But you cann't remove the `assert { type: "json" }` because otherwise it doesn't import the json!
+You can name the Variable and file name to what you want. But you can't remove the `assert { type: "json" }` because otherwise it doesn't import the json!
 
 The JSON file must contain an Array with Objects for each Image! In the Object must be a path. Optional can be the name, width and height defined. If width and height are specified, these are used. If not the `defaults` are used. For name see `Cache`!
 
@@ -53,10 +53,11 @@ You can load a single or multiple Images.
 #### loadImage()
 This Function loads the Image and accepts these arguments:
 
+- Name (Given Name)
 - Src (path to the file)
 - Width
 - Height
-- Name (Given Name)
+- Cache (Default is false. See [Cache](#cache))
 
 #### handleImages()
 This Function repeats the `loadImage()` Function for all Images in the `imported JSON`
@@ -65,7 +66,7 @@ This Function repeats the `loadImage()` Function for all Images in the `imported
 It'll return the default/alternative Values.
 
 ### Cache
-when a Name is specified, the Image will be chached and can get accessed through the `getImage()` Function which needs the name as argument. 
+When Cache is true, the Image will be chached and can get accessed through the `getImage()` Function which needs the name as an argument. Cache is by default set to false and in case of undefinded.
 
 
 ## Examples
