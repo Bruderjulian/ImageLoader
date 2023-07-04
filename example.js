@@ -1,13 +1,17 @@
-import { Loader } from "./js/image-loader.js";
+import { Loader } from "./image-loader.js";
 
 import data from "./assets.json" assert { type: "json" };
+//Import ImageLoader and JSON
 
 window.onload = function() {
-    var assets = Loader.handleImages(data);
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    var img = assets[0];
-    var img2 = assets[1];
-    ctx.drawImage(img, 32, 32, 128, 96);
-    ctx.drawImage(img2, 96, 96, 128, 96);
+    //Get Canvas and Context
+
+    var assets = Loader.handleImages(data); 
+    //Load the Images
+
+    ctx.drawImage(assets[0], 32, 32);
+    ctx.drawImage(assets[1], 96, 96);
+    //Draw them on a Canvas
 };
