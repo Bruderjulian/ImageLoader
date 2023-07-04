@@ -1,4 +1,4 @@
-export class Loader {
+export class ImageLoader {
   static images = {};
 
   static defaultImage() {
@@ -9,7 +9,7 @@ export class Loader {
     };
   }
 
-  static loadImage(src, width, height, name) {
+  static loadImage(name, src, width, height, cache) {
     try {
       let ImgWidth =
         width !== undefined && width !== null
@@ -25,18 +25,7 @@ export class Loader {
       var img = new Image(ImgWidth, ImgHeight);
       img.src = ImgSrc;
 
-      img.onerror = function () {
-        console.error(
-          "Could not load image: " +
-            ImgSrc +
-            " with w: " +
-            ImgWidth +
-            " with h: " +
-            ImgHeight
-        );
-      };
-
-      if (name !== undefined && name !== "") {
+      if (cache == true) {
         this.images[name.toString()] = img;
       }
       return img;
@@ -63,7 +52,7 @@ export class Loader {
     if (assets !== undefined && assets !== []) {
       for (var i = 0; i < assets.length; i++) {
         const elem = assets[i];
-        out.push(Loader.loadImage(elem.path, elem.width, elem.height, elem.name));
+        out.push(this.loadImage(elem.name, elem.path, elem.width, elem.height, elem.cache));
       }
     }
     return out;
