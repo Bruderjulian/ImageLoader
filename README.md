@@ -73,7 +73,7 @@ When Cache is true, the Image will be chached and can get accessed through the `
 
 ### Javascript
 ```javascript
-import { Loader } from "./js/image-loader.js";
+import { ImageLoader } from "./js/image-loader.js";
 
 import data from "./ImageMetadata.json" assert { type: "json" };
 //Import ImageLoader and JSON
@@ -82,7 +82,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 //Get Canvas and Context
 
-var assets = Loader.handleImages(data); 
+var assets = ImageLoader.handleImages(data); 
 //Load the Images
 
 ctx.drawImage(assets[0], 32, 32);
@@ -96,13 +96,15 @@ ctx.drawImage(assets[1], 96, 96);
         "name": "btnA",
         "path": "./assets/ButtonA.png",
         "width": 128,
-        "height": 96
+        "height": 96,
+        "cache": false
       },
       {
         "name": "btnB",
         "path": "./assets/ButtonB.png",
         "width": 128,
-        "height": 96
+        "height": 96,
+        "cache": false
       }
     ]
 ```
